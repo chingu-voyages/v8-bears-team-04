@@ -1,0 +1,33 @@
+{
+  "name": "location-finder",
+  "version": "1.0.0",
+  "description": "Search, find and archive your favorite haunts!",
+  "main": "index.js",
+  "scripts": {
+    "client-init":"npm install --prefix client",
+    "server-init":"npm install",
+    "init": "concurrently \"npm:client-init\" \"npm:server-init\" ",
+    "client":"npm start --prefix client",
+    "server":"nodemon index.js",
+    "dev": "concurrently \"npm:server\" \"npm:client\" ",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R-Layer/v8-bears-team-04.git"
+  },
+  "author": "Bears-Team-04[voyage-08]",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/R-Layer/v8-bears-team-04/issues"
+  },
+  "homepage": "https://github.com/R-Layer/v8-bears-team-04#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10"
+  }
+}
