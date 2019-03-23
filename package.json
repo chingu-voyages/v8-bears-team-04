@@ -4,11 +4,11 @@
   "description": "Search, find and archive your favorite haunts!",
   "main": "index.js",
   "scripts": {
-    "client-init":"npm install --prefix client",
-    "server-init":"npm install",
-    "init": "concurrently \"npm:client-init\" \"npm:server-init\" ",
-    "client":"npm start --prefix client",
-    "server":"nodemon index.js",
+    "client-init": "npm install --prefix client",
+    "server-init": "npm install",
+    "init": "npm run client-init; npm run server-init",
+    "client": "npm start --prefix client",
+    "server": "nodemon index.js",
     "dev": "concurrently \"npm:server\" \"npm:client\" ",
     "test": "mocha"
   },
