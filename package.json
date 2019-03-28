@@ -8,7 +8,7 @@
     "server-init": "npm install",
     "init": "npm run client-init; npm run server-init",
     "client": "npm start --prefix client",
-    "server": "nodemon index.js",
+    "server": "nodemon server/index.js",
     "dev": "concurrently \"npm:server\" \"npm:client\" ",
     "test": "mocha"
   },
