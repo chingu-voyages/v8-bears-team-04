@@ -4,9 +4,7 @@
   "description": "Search, find and archive your favorite haunts!",
   "main": "index.js",
   "scripts": {
-    "client-init": "npm install --prefix client",
-    "server-init": "npm install",
-    "init": "npm run client-init; npm run server-init",
+    "init": "cd client && npm install && cd.. && cd server && npm install",
     "client": "npm start --prefix client",
     "server": "nodemon server/index.js",
     "dev": "concurrently \"npm:server\" \"npm:client\" ",
