@@ -36,7 +36,7 @@ app.use('/auth', UserAuth)
 // for each unknown path it will send back the index of 
 // react app
 app.get('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "..", "client", "public", "index.html"));
 });
 
 module.exports = app;
