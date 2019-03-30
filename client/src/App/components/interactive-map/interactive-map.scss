@@ -1,0 +1,51 @@
+/* -------------------------------------- */
+/*    GENERAL MAP CONTAINER PROPERTIES    */
+/* -------------------------------------- */
+.map-container {
+    display: flex;
+    flex-flow: column nowrap;
+    //background-color: #124306;
+    height: 50vh;
+    width: 75vw;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 3px groove #212121;
+}
+
+.map-container h4{
+    margin: 0;
+    padding: 0;
+    flex: 1 2 50%;
+}
+
+.map-container figure{
+    height: 100%;
+    margin: 0;
+    flex: 4 1 100%;
+}
+
+.map-container footer{
+    margin: 0;
+    padding: 0;
+    flex: 1 2 100%;
+}
+
+/* -------------------------------------- */
+/*             MAP CONTROLS               */
+/* -------------------------------------- */
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.row > button {
+    flex: 2 1 50%;
+}
+
+.row > input {
+    flex: 1 2 25%;
+}
