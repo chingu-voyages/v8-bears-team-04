@@ -26,6 +26,7 @@ function Home (props) {
                 </small>
             </div>
             <Link to="/list">Check links - page II</Link>
+            <Map />
         </div>
     );
 };
