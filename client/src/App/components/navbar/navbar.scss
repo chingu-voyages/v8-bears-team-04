@@ -1,0 +1,20 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: aliceblue;
+}
+
+.brand {
+    outline: solid 1px green;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+
+    li {
+        padding: 0 1rem;
+    }
+}
+
