@@ -1,0 +1,12 @@
+// general reset
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// general variables
+$info-color: #235463;
+$white-color: #efefef;
+$success-color: #179930;
+$red-color: #a03858;
