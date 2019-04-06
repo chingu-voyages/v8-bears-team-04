@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import Map from '../components/interactive-map/InteractiveMap';
 
 function Home (props) {
     const [message, setMessage] = useState('No response');
@@ -15,17 +16,16 @@ function Home (props) {
                 .then(response => response.json())
                 .then(message =>  message);
     };
-
+    
     return (
         <div className="App">
-            <h3> Page One. </h3>
-            <div>
-                <h4>Main route query result:</h4>
-                <small>
-                    <code>{message.message}</code>
-                </small>
+            <div className="hero">
+                <div className="hero-text" >
+                    <h1 className="hero-title" >LOCATION FINDER</h1>
+                    <h4 className="hero-subtitle">REPLACE WITH AN INSPIRING TEXT THAT DESCRIBE OUR APP</h4>
+                </div>
             </div>
-            <Link to="/list">Check links - page II</Link>
+           {/*  <Map /> */}
         </div>
     );
 };
