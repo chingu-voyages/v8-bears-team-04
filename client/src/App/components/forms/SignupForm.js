@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import './forms.scss';
 
@@ -8,7 +9,8 @@ function SignupForm(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordBis, setPasswordBis] = useState("");
-    
+    const [registered, setRegistered] = useState(false);
+
     function submitForm(e) {
         e.preventDefault();
 
@@ -25,13 +27,18 @@ function SignupForm(props) {
                     setEmail("");
                     setPassword("");
                     setPasswordBis("");
-                    console.log(message)
+                    if(message.error || message.message.startsWith("User already")) {
+                       return console.log('Something failed', message);
+                    };
+                    return setRegistered(true);
                 })
                 .catch(error => console.error(error));
     }
 
-    return (
+    return ( 
         <form className="form-container" onSubmit={submitForm}>
+            {/* redirect to home until login page is set up */}
+            {registered && <Redirect to="/"/>}
             <div className="form-field" >
                 <label htmlFor="name">Name:</label>
                 <input
