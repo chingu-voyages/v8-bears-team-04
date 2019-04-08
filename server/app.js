@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-const { commonalities } = require('./middleware/commonMiddlewares');
+const { commonalities } = require('./middleware/commonmiddlewares');
 const commonRoutes = require('./routes/commonRoutes');
 const UserAuth = require('./routes/UserAuth');
 
