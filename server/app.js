@@ -6,6 +6,7 @@ const app = express();
 const { commonalities } = require('./middleware/commonMiddlewares');
 const commonRoutes = require('./routes/commonRoutes');
 const UserAuth = require('./routes/UserAuth');
+const Search = require('./routes/search')
 
 
 //user authentication
@@ -32,6 +33,7 @@ app.use(commonRoutes);
 
 //user authentication
 app.use('/auth', UserAuth)
+app.use('/search', Search)
 
 // for each unknown path it will send back the index of 
 // react app

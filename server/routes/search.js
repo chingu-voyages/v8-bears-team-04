@@ -2,9 +2,9 @@ const express = require('express')
 
 const router = express.Router()
 
-const SearchCtrl = require('../controllers/SearchCtr')
+const SearchCtrl = require('../controllers/SearchCtrl')
 
-router.route('/search')
+router.route('/')
 .get(SearchCtrl.Search)
 
 
