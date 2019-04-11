@@ -1,0 +1,39 @@
+@import '../../../shared.scss';
+
+.notification {
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    width: 75vw;
+    max-width: 30rem;
+
+    padding: 1rem;
+    text-align: center;
+
+    border-radius: 10px;
+    animation: fadeInOut 5s;
+
+    opacity: 0;
+}
+
+.success {
+    background-color: lighten($success-color, 15%);
+    color: darken($success-color, 15%);
+    border: 1px solid darken($success-color, 15%);
+}
+
+.error {
+    background-color: lighten($danger-color,15%);
+    color: darken($danger-color, 15%);
+    border: 1px solid darken($danger-color, 15%);
+}
+
+@keyframes fadeInOut {
+    0% {opacity: 0; top: 0;}
+    15% {opacity: 1; top: 3rem;}
+    85% {opacity: 1; top: 3rem;}
+    100% {opacity: 0; top: 0;}
+}
