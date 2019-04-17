@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Map from '../components/interactive-map/InteractiveMap';
+import Notification from '../components/notification/Notification';
 
 function Home (props) {
-    const [message, setMessage] = useState('No response');
-    
-    useEffect(() => {
-        fetchData()
-            .then(backendMessage => 
-                setMessage(backendMessage));
-    }, []);
-    
-    function fetchData() {
-        return fetch('/test')
-                .then(response => response.json())
-                .then(message =>  message);
-    };
-    
+
+    const {state = {}} = props.location;
+    const {type, message: msg} = state;
+        
     return (
         <div className="App">
+            {type && <Notification type={type} message={msg} />}
             <div className="hero">
                 <div className="hero-text" >
                     <h1 className="hero-title" >LOCATION FINDER</h1>
