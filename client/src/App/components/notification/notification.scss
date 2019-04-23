@@ -14,7 +14,7 @@
     text-align: center;
 
     border-radius: 10px;
-    animation: fadeInOut 5s;
+    animation: fadeInOut 5s; // in sync with component duration, TO REFACTOR
 
     opacity: 0;
 }

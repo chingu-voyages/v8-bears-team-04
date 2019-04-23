@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './notification.scss';
 
-function Notification({type, message}){
+function Notification({type, message, display}){
+
+    const [mounted, setMounted] = useState(true);
+
+    useEffect(() => {
+        setMounted(display);
+    },[display]);
+
     return(
-    <aside className={`notification ${type}`}>
-        <span>{message}</span>
-    </aside>
+    <div>
+    {   mounted ? 
+            <aside className={`notification ${type}`}>
+                <span>{message}</span>
+            </aside>
+                :
+        null
+    }
+    </div>
     );
 };
 
