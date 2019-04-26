@@ -37,8 +37,7 @@ function SignupForm(props) {
 
     return ( 
         <form className="form-container" onSubmit={submitForm}>
-            {/* redirect to home until login page is set up */}
-            {registered &&  <Redirect to={{pathname:"/auth/login", state: {type: 'success', message: 'You successfully registered your account!'}}}/>}
+            {registered &&  <Redirect to={{pathname:"/signin", state: {type: 'success', message: 'You successfully registered your account!'}}}/>}
             <div className="form-field" >
                 <label htmlFor="name">Name:</label>
                 <input
