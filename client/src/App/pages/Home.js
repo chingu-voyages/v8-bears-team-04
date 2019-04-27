@@ -10,7 +10,7 @@ function Home (props) {
         
     return (
         <div className="App">
-            {type && <Notification type={type} message={msg} />}
+            <Notification data={{type, message:msg}} />}
             <div className="hero">
                 <div className="hero-text" >
                     <h1 className="hero-title" >LOCATION FINDER</h1>
