@@ -1,7 +1,7 @@
 /* 
 Validation rules to implement front / back:
 email - length < 40, valid email
-password - 6 < length < 20, at least one digit, one uppercase char, one special char
+password - 6 < length < 20, at least one digit, one uppercase char
 names - 2 < length < 20;
 */
 
@@ -29,9 +29,9 @@ export const passwordValidation = (passwordCandidate) => {
     return (
         passwordCandidate.length >= 6 
         ?   passwordCandidate.length <= 20 
-            ?   /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/.test(passwordCandidate)
+            ?   /^(?=.*[A-Z])(?=.*[0-9]).*$/.test(passwordCandidate)
                 ?   false
-                :   "password must contain at least one digit, one uppercase character, one special character"
+                :   "password must contain at least one digit, one uppercase character"
             : "password must be at most 20 character long"
         :   "password must be at least 6 character long"
         )

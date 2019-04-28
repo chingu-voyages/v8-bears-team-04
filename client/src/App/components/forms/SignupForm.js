@@ -19,7 +19,11 @@ function SignupForm({submitData}) {
     function submitForm(e) {
         e.preventDefault();
 
-        submitData({name, email, password, passwordBis});
+        if(formIsValid()) {
+            submitData({name, email, password, passwordBis});
+        } else {
+            return;
+        }
 
         setName("");
         setEmail("");
@@ -49,10 +53,18 @@ function SignupForm({submitData}) {
     };
 
     function validatePasswordBis(passwordBis) {
-        let validationError = passwordBisValidation(password);
+        let validationError = passwordBisValidation(password, passwordBis);
         if(validationError) {
             setPasswordBisError(validationError);
         };
+    };
+
+    function formIsValid() {
+        let errors =nameValidation(name) ||
+                    emailValidation(email) ||
+                    passwordValidation(password) ||
+                    passwordBisValidation(password, passwordBis);
+        return !errors;
     };
 
     return ( 
@@ -115,6 +127,7 @@ function SignupForm({submitData}) {
                     id="submit-btn" 
                     value="REGISTER" 
                     className="info-button"
+                    disabled={!formIsValid()}
                 />
             </div>
         </form>

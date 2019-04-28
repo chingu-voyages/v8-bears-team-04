@@ -13,7 +13,12 @@ function SigninForm({submitData}) {
     function submitForm(e) {
         e.preventDefault();
 
-        submitData({email, password});
+        if(formIsValid()) {
+            submitData({email, password});
+        } else {
+            return;
+        }
+        
         setEmail("");
         setPassword("");
     }
@@ -31,6 +36,12 @@ function SigninForm({submitData}) {
             setPasswordError(validationError);
         }
     }
+
+    function formIsValid() {
+        let errors =emailValidation(email) ||
+                    passwordValidation(password);
+        return !errors;
+    };
 
     return ( 
         <form className="form-container" onSubmit={submitForm}>
@@ -66,6 +77,7 @@ function SigninForm({submitData}) {
                     id="submit-btn" 
                     value="Login" 
                     className="info-button"
+                    disabled={!formIsValid()}
                 />
             </div>
         </form>
