@@ -52,3 +52,8 @@
   text-align: center;
   margin: 3rem auto 2rem; // white space consistency
 }
+
+.map-container {
+    display: flex;
+    flex-flow: column nowrap;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Map from '../components/interactive-map/InteractiveMap';
 import Notification from '../components/notification/Notification';
 
 function Home (props) {
@@ -17,7 +16,6 @@ function Home (props) {
                     <h4 className="hero-subtitle">REPLACE WITH AN INSPIRING TEXT THAT DESCRIBE OUR APP</h4>
                 </div>
             </div>
-           {/*  <Map /> */}
         </div>
     );
 };

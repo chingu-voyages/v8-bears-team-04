@@ -1,0 +1,48 @@
+@import '../../../mixins.scss';
+@import '../../../shared.scss';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(20, 20, 20, 0.5);
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 30vh;
+    left: 10vw;
+    right: 10vw;
+    background-color: $theme-main-color;
+    color: darken($info-color, 10%);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.modal-title {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.modal-close {
+    font-size: 2rem;
+    @include button($danger-color, $white-color);
+    padding: 0 0.5rem;
+}
+
+@media (min-width: 600px) {
+    .modal-wrapper {
+    position: absolute;
+    left: 15vw;
+    right: 15vw;
+}
+}
