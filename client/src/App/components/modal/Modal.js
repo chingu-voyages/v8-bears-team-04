@@ -5,20 +5,27 @@ import ReactDOM from 'react-dom';
 
 import './modal.scss';
 
-const Modal = ({isOpen, close}) => isOpen ? ReactDOM.createPortal(
+const Modal = ({isOpen, close, children, title=""}) => isOpen ? ReactDOM.createPortal(
     <>
         <div className="modal-overlay" />
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
-        <div className="modal" >
-            <div className="modal-header">
-                <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={close}>
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div className="modal" >
+                <div className="modal-header">
+                    <span className="modal-title">{title}</span>
+                    <button 
+                        type="button" 
+                        className="modal-close" 
+                        data-dismiss="modal" 
+                        aria-label="Close" 
+                        onClick={close}
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div>
+                    {children}
+                </div>
             </div>
-            <p>
-                Modal content
-            </p>
-        </div>
         </div>
     </>, document.body )
     : null;
