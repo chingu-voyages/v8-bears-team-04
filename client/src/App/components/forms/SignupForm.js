@@ -1,43 +1,74 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+
+import {nameValidation, emailValidation, 
+        passwordValidation, passwordBisValidation} from './validationRules';
 
 import './forms.scss';
 
-function SignupForm(props) {
+function SignupForm({submitData}) {
 
     const [name, setName] = useState("");
+    const [nameError, setNameError] = useState(null);
     const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState(null);
     const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState(null);
     const [passwordBis, setPasswordBis] = useState("");
-    const [registered, setRegistered] = useState(false);
+    const [passwordBisError, setPasswordBisError] = useState(null);
 
     function submitForm(e) {
         e.preventDefault();
 
-        const fetchOpt = {
-            method: 'POST',
-            headers: {"content-type":"application/json"},
-            body: JSON.stringify({name, email, password, passwordBis})
-        };
+        if(formIsValid()) {
+            submitData({name, email, password, passwordBis});
+        } else {
+            return;
+        }
 
-        return fetch('/auth/register', fetchOpt)
-                .then(response => response.json())
-                .then(message =>  {
-                    setName("");
-                    setEmail("");
-                    setPassword("");
-                    setPasswordBis("");
-                    if(message.error || message.message.startsWith("User already")) {
-                       return console.log('Something failed', message);
-                    };
-                    return setRegistered(true);
-                })
-                .catch(error => console.error(error));
-    }
+        setName("");
+        setEmail("");
+        setPassword("");
+        setPasswordBis("");
+    };
+
+    function validateName(name) {
+        let validationError = nameValidation(name);
+        if(validationError) {
+            setNameError(validationError);
+        };
+    };
+
+    function validateEmail(email) {
+        let validationError = emailValidation(email);
+        if(validationError) {
+            setEmailError(validationError);
+        };
+    };
+
+    function validatePassword(password) {
+        let validationError = passwordValidation(password);
+        if(validationError) {
+            setPasswordError(validationError);
+        };
+    };
+
+    function validatePasswordBis(passwordBis) {
+        let validationError = passwordBisValidation(password, passwordBis);
+        if(validationError) {
+            setPasswordBisError(validationError);
+        };
+    };
+
+    function formIsValid() {
+        let errors =nameValidation(name) ||
+                    emailValidation(email) ||
+                    passwordValidation(password) ||
+                    passwordBisValidation(password, passwordBis);
+        return !errors;
+    };
 
     return ( 
         <form className="form-container" onSubmit={submitForm}>
-            {registered &&  <Redirect to={{pathname:"/signin", state: {type: 'success', message: 'You successfully registered your account!'}}}/>}
             <div className="form-field" >
                 <label htmlFor="name">Name:</label>
                 <input
@@ -46,7 +77,10 @@ function SignupForm(props) {
                     size="1"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    onBlur={e => validateName(e.target.value)}
+                    onFocus={() => setNameError(null)}
                 />
+                <small>{nameError}</small>
             </div>
             <div className="form-field" >
                 <label htmlFor="email">Email: </label>
@@ -56,7 +90,10 @@ function SignupForm(props) {
                     size="1"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    onBlur={e => validateEmail(e.target.value)}
+                    onFocus={() => setEmailError(null)}                    
                 />
+                <small>{emailError}</small>
             </div>
             <div className="form-field" >
                 <label htmlFor="password"> Password: </label>
@@ -66,7 +103,10 @@ function SignupForm(props) {
                     size="1"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    onBlur={e => validatePassword(e.target.value)}
+                    onFocus={() => setPasswordError(null)}
                 />
+                <small>{passwordError}</small>
             </div>
             <div className="form-field" >
                 <label htmlFor="password-bis"> Confirm Password: </label>
@@ -76,7 +116,10 @@ function SignupForm(props) {
                     size="1"
                     value={passwordBis}
                     onChange={e => setPasswordBis(e.target.value)}
+                    onBlur={e => validatePasswordBis(e.target.value)}
+                    onFocus={() => setPasswordBisError(null)}
                 />
+                <small>{passwordBisError}</small>
             </div>
             <div className="form-field" >
                 <input 
@@ -84,6 +127,7 @@ function SignupForm(props) {
                     id="submit-btn" 
                     value="REGISTER" 
                     className="info-button"
+                    disabled={!formIsValid()}
                 />
             </div>
         </form>

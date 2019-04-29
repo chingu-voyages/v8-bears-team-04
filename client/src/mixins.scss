@@ -13,4 +13,9 @@
     &:active {
         background-color: lighten($background-color, 10%);
     }
+
+    &:disabled {
+        background-color: desaturate($background-color, 70%);
+        cursor: not-allowed;
+    }
 };
