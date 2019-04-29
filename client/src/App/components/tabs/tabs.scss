@@ -1,0 +1,97 @@
+@import '../../../mixins.scss';
+@import '../../../shared.scss';
+
+.hidden {
+    display: none;
+}
+
+.placeholder {
+    height: 70vh;
+    background-color: #d3a9c1;
+}
+
+.nav-tabs {
+    display: flex;
+    list-style-type: none;
+
+    li {
+        flex-grow: 1;
+        text-align: center;
+        box-shadow: 2px 0px  #e4d4e4, -2px 0px #e4d4e4;
+        cursor: pointer;
+
+        &.active {
+            background-color: #e4d4e4;
+        }
+    }
+}
+
+.content-window-tabs {
+    background-color: #e4d4e4;
+    height: 30vh;
+    padding: 2rem 1rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+
+.row > input {
+    flex: 1 2 25%;
+}
+
+.add-button {
+    @include button($success-color, $white-color);
+    width: 100%;
+}
+
+.rounded {
+    border-radius: 50%;
+    font-size: 2.5rem;
+    padding: 0 0.75rem;
+    margin: 0 1rem ;
+}
+
+.button-like {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.info {
+    border: 2px solid $info-color;
+    background-color: $white-color;
+    color: $info-color;
+}
+.inverted-info {
+    border: 2px solid $white-color;
+    background-color: $info-color;
+    color: $white-color;
+}
+
+.toggle-list {
+    position: relative;
+    cursor: pointer;
+}
+
+.hidden-list {
+    position: absolute;
+    bottom: 3.5rem;
+    width: 100%;
+    background-color: #ededed;
+    list-style-type: none;
+
+    li {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    li:hover {
+        border: 1px solid $info-color;
+        background-color: $white-color;
+        color: $info-color;
+    }
+}
